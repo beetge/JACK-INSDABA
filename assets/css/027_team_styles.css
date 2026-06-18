@@ -1,0 +1,334 @@
+/* CSS extracted from inline <style> block 027 in the 'team' template/context. Related area: styles. */
+
+        :root {
+            --bg: #fbf9f8;
+            --text: #111;
+            --muted: rgba(17,17,17,.58);
+            --line: rgba(17,17,17,.12);
+            --blue-accent: #8fb8e8;
+            --blue-dark: #071429;
+            --font-heading: "Figtree", Arial, sans-serif;
+            --font-body: "DM Sans", Arial, sans-serif;
+            --font-serif: "Instrument Serif", Georgia, serif;
+        }
+        * { box-sizing: border-box }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-body) }
+        a { color: inherit; text-decoration: none }
+        .site-header { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.94); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line) }
+        .site-nav { min-height: 82px; padding: 0 3%; display: flex; align-items: center; justify-content: space-between; gap: 24px }
+        .brand img { height: 76px; width: auto; display: block }
+        .nav-links { display: flex; align-items: center; gap: 20px; list-style: none; margin: 0; padding: 0; font-size: 12px; font-weight: 900; letter-spacing: 1.3px; text-transform: uppercase }
+        .team-hero { min-height: clamp(560px, calc(100svh - 82px), 760px); display: flex; align-items: flex-end; padding: clamp(56px,8vw,96px) 3%; background: #0a0a0a; color: #fff; position: relative; overflow: hidden }
+        .team-hero::before { content: ""; position: absolute; inset: 0; background: var(--hero-bg); background-size: cover; background-position: center; pointer-events: none }
+        .hero-copy { position: relative; z-index: 1; max-width: 980px }
+        .kicker { display: inline-flex; margin-bottom: 18px; color: var(--blue-accent); font-size: 12px; font-weight: 900; letter-spacing: 2.6px; text-transform: uppercase }
+        h1 { font-family: var(--font-heading); font-size: clamp(46px,7vw,96px); line-height: .92; letter-spacing: -.05em; margin: 0 0 24px; max-width: 980px }
+        .dek { max-width: 760px; color: rgba(255,255,255,.72); font-size: clamp(18px,2vw,22px); line-height: 1.7; margin: 0 0 26px }
+        .team-section { padding: clamp(62px,7vw,96px) 3%; background: #fff }
+        .team-section-header { text-align: center; margin-bottom: 60px }
+        .team-section-header .kicker { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 3px; color: var(--blue-accent); margin-bottom: 16px }
+        .team-section-header h2 { font-size: clamp(36px,4.5vw,56px); font-family: "Figtree", sans-serif; font-weight: 800; margin-bottom: 16px; color: var(--text) }
+        .team-section-header p { font-size: 18px; color: var(--muted); max-width: 560px; margin: 0 auto; line-height: 1.6 }
+        .team-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px }
+        .team-card { background: var(--bg); border-radius: 24px; overflow: hidden; border: 1px solid var(--line); position: relative; transition: transform .4s ease, box-shadow .4s ease; cursor: default }
+        .team-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,.1) }
+        .team-card-img { width: 100%; height: 340px; object-fit: cover; transition: transform .6s ease }
+        .team-card:hover .team-card-img { transform: scale(1.05) }
+        .team-card-body { padding: 24px 28px 28px; position: relative; background: #fff }
+        .team-card-body h4 { font-family: "Figtree", sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 4px; color: var(--text) }
+        .team-card-body .title { font-size: 13px; color: var(--blue-accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px }
+        .team-card-body .bio { font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 16px }
+        .team-card-quote { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg,rgba(7,20,41,.97),rgba(0,0,0,.95)); display: flex; align-items: center; justify-content: center; padding: 30px; opacity: 0; pointer-events: none; transition: opacity .4s ease; border-radius: 24px }
+        .team-card:hover .team-card-quote { opacity: 1 }
+        .team-card-quote p { color: #fff; font-size: 16px; line-height: 1.7; text-align: center; font-style: italic; max-width: 320px }
+        .site-footer { background: var(--blue-dark); color: #fff; padding: clamp(56px,7vw,90px) 3% }
+        .footer-content { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 48px }
+        .footer-section h3 { font-family: "Figtree", sans-serif; font-size: 18px; font-weight: 700; margin: 0 0 20px; color: var(--blue-accent) }
+        .footer-section p { font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.6; margin: 0 0 16px }
+        .footer-section a { color: var(--blue-accent); text-decoration: none; font-weight: 700 }
+        .footer-section a:hover { text-decoration: underline }
+        .footer-bottom { max-width: 1280px; margin: 48px auto 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap }
+        .footer-bottom p { font-size: 12px; color: rgba(255,255,255,.5); margin: 0 }
+        @media(max-width:900px) {
+            .site-nav { align-items: flex-start; flex-direction: column; padding: 18px 5% }
+            .nav-links { flex-wrap: wrap; gap: 12px }
+            .team-hero { min-height: 560px }
+            .team-grid { grid-template-columns: repeat(2,1fr) }
+        }
+        @media(max-width:560px) {
+            .team-hero { padding-left: 18px; padding-right: 18px }
+            .team-section { padding-left: 18px; padding-right: 18px }
+            .team-grid { grid-template-columns: repeat(2, 1fr) }
+        }
+
+/* RESPONSIVE HARDENING: shared mobile safety layer, preserves existing palette and brand. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+  min-width: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg,
+iframe {
+  max-width: 100%;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  height: auto;
+}
+
+button,
+[role="button"],
+input,
+select,
+textarea,
+summary,
+a {
+  touch-action: manipulation;
+}
+
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (max-width: 1024px) {
+  [style*="grid-template-columns"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  [style*="width:"],
+  [style*="max-width:"] {
+    max-width: 100% !important;
+  }
+
+  [style*="min-width:"] {
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+  }
+
+  .container,
+  .wrap,
+  .site-wrap,
+  .page-wrap,
+  .content-wrap,
+  .section-wrap {
+    max-width: 100%;
+  }
+
+  [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  th,
+  td {
+    white-space: normal;
+  }
+
+  .button,
+  .btn,
+  [class*="button"],
+  [class*="-btn"],
+  [class*="_btn"],
+  [class*="tab"],
+  .nav-links a,
+  .site-links a,
+  .mobile-nav-links a,
+  .detail-pill {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 640px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li,
+  a,
+  span,
+  strong,
+  small {
+    overflow-wrap: anywhere;
+  }
+
+  .actions,
+  .button-row,
+  .btn-row,
+  .detail-row,
+  .nav-actions,
+  .site-links,
+  .nav-links {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: max(16px, 1rem);
+  }
+
+  .button,
+  .btn,
+  [class*="button"],
+  [class*="-btn"],
+  [class*="_btn"] {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 390px) {
+  [style*="gap:"] {
+    gap: min(16px, 4vw) !important;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .nav-links li:focus-within > .dropdown,
+  .nav-links .dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .impact-card .impact-card-overlay,
+  .blog-card-overlay-alt .card-content p,
+  .podcast-card-horizontal .card-content p,
+  .article-card .article-read,
+  .product-card .product-card-body,
+  .session-card-image img {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* RESPONSIVE HARDENING: listing, programme, and insight surfaces. */
+@media (max-width: 1024px) {
+  .speaker-grid,
+  .speakers-grid,
+  .programme-grid,
+  .agenda-grid,
+  .insights-grid,
+  .cards-grid,
+  .team-grid,
+  .profile-grid,
+  .content-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .speaker-grid,
+  .speakers-grid,
+  .programme-grid,
+  .agenda-grid,
+  .insights-grid,
+  .cards-grid,
+  .team-grid,
+  .profile-grid,
+  .content-grid,
+  .session-grid,
+  .session-card,
+  .article-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .programme-table,
+  .agenda-table,
+  .schedule-table,
+  .csi-pro-table,
+  .csi-programme-table,
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .programme-tabs,
+  .agenda-tabs,
+  .speaker-tabs,
+  .filter-row,
+  .room-filters,
+  .csi-pro-tabs,
+  .csi-programme-v3-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .programme-tabs button,
+  .agenda-tabs button,
+  .speaker-tabs button,
+  .filter-row button,
+  .room-filters button,
+  .csi-pro-tab,
+  .csi-room-filter,
+  .csi-programme-v3-tab {
+    min-height: 44px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .speaker-card,
+  .programme-card,
+  .insight-card,
+  .article-card,
+  .profile-card,
+  .team-card {
+    width: 100%;
+  }
+}
