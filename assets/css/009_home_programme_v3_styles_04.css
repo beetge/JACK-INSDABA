@@ -144,18 +144,7 @@
       line-height: 1.65 !important;
       margin-bottom: 20px !important;
     }
-    /* CTA buttons: stack + full width */
-    .csi-keynote-spotlight-actions {
-      flex-direction: column !important;
-      gap: 8px !important;
-    }
-    .csi-keynote-spotlight-actions a {
-      width: 100% !important;
-      justify-content: center !important;
-      text-align: center !important;
-      padding: 12px 16px !important;
-      font-size: 11px !important;
-    }
+    /* CTA buttons are handled by the mobile keynote action grid near the end of this file. */
 
     /* --- COUNTDOWN SECTION --- */
     .csi-awards-countdown-section {
@@ -1337,5 +1326,306 @@ summary:focus-visible {
   #csi-indaba-insights-v2 div.insights-grid[style*="grid-template-columns"],
   #csi-indaba-insights-v2 div[style*="grid-template-columns:repeat(3"] {
     gap: 7px !important;
+  }
+}
+
+/* MOBILE TEAM GRID: keep the homepage team cards compact in three columns. */
+@media (max-width: 820px) {
+  #csi-awards-exp-behind-scenes .team-grid,
+  #csi-awards-exp-behind-scenes div.team-grid[style*="grid-template-columns"],
+  #csi-awards-exp-behind-scenes div[style*="grid-template-columns:repeat(3"] {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: clamp(8px, 2.4vw, 14px) !important;
+    align-items: start !important;
+  }
+
+  #csi-awards-exp-behind-scenes .team-card,
+  #csi-awards-exp-behind-scenes .team-card[style*="height"] {
+    align-self: start;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    min-width: 0;
+    aspect-ratio: 1 / 1.18;
+    border-radius: 7px !important;
+    overflow: hidden;
+  }
+
+  #csi-awards-exp-behind-scenes .team-card > div:first-child,
+  #csi-awards-exp-behind-scenes .team-card > img:first-child {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+  }
+
+  #csi-awards-exp-behind-scenes .team-card > div:nth-child(2):not(.quote-overlay) {
+    padding: clamp(9px, 2.3vw, 13px) !important;
+  }
+
+  #csi-awards-exp-behind-scenes .team-card h4 {
+    margin-bottom: 4px !important;
+    font-size: clamp(11px, 3vw, 15px) !important;
+    line-height: 1.08 !important;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+
+  #csi-awards-exp-behind-scenes .team-card p {
+    display: -webkit-box;
+    margin: 0 !important;
+    font-size: clamp(8px, 2.1vw, 10px) !important;
+    line-height: 1.25 !important;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  #csi-awards-exp-behind-scenes .team-card .quote-overlay {
+    display: none !important;
+  }
+}
+
+@media (max-width: 380px) {
+  #csi-awards-exp-behind-scenes .team-grid,
+  #csi-awards-exp-behind-scenes div.team-grid[style*="grid-template-columns"],
+  #csi-awards-exp-behind-scenes div[style*="grid-template-columns:repeat(3"] {
+    gap: 7px !important;
+  }
+
+  #csi-awards-exp-behind-scenes .team-card > div:nth-child(2):not(.quote-overlay) {
+    padding: 7px !important;
+  }
+}
+
+/* SECTION LABELS: keep the home-page kicker spans/paragraphs visually consistent. */
+#csi-awards-exp-theme > div > div:first-child > p:first-child,
+.csi-principal-keynote-artwork .csi-keynote-spotlight-head > div > span:first-child,
+#csi-awards-exp-programme > div > div:first-child > div:first-child > p:first-child,
+#csi-awards-exp-speakers > div > div:first-of-type > div:first-child > p:first-child,
+#csi-indaba-insights-v2 .kicker,
+#csi-awards-exp-behind-scenes .kicker,
+#csi-awards-exp-tickets > div > div:first-child > p:first-child {
+  display: block !important;
+  max-width: 100%;
+  font-family: "Figtree", sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  line-height: 1.22 !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase !important;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+  #csi-awards-exp-theme > div > div:first-child > p:first-child,
+  .csi-principal-keynote-artwork .csi-keynote-spotlight-head > div > span:first-child,
+  #csi-awards-exp-programme > div > div:first-child > div:first-child > p:first-child,
+  #csi-awards-exp-speakers > div > div:first-of-type > div:first-child > p:first-child,
+  #csi-indaba-insights-v2 .kicker,
+  #csi-awards-exp-behind-scenes .kicker,
+  #csi-awards-exp-tickets > div > div:first-child > p:first-child {
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+    letter-spacing: 2px !important;
+  }
+}
+
+/* SECTION H2 SCALE: make the main home-page section headings match across sections. */
+#csi-awards-exp-theme > div > div:first-child > h2,
+.csi-principal-keynote-artwork .csi-keynote-spotlight-head h2,
+#csi-awards-exp-programme > div > div:first-child > div:first-child > h2,
+#csi-awards-exp-speakers > div > div:first-of-type > div:first-child > h2,
+#csi-indaba-insights-v2 h2,
+#csi-awards-exp-behind-scenes h2,
+#csi-awards-exp-tickets > div > div:first-child > h2 {
+  max-width: 100%;
+  font-family: "Figtree", sans-serif !important;
+  font-size: clamp(52px, 6vw, 82px) !important;
+  font-weight: 900 !important;
+  line-height: .96 !important;
+  letter-spacing: 0 !important;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+@media (max-width: 768px) {
+  #csi-awards-exp-theme > div > div:first-child > h2,
+  .csi-principal-keynote-artwork .csi-keynote-spotlight-head h2,
+  #csi-awards-exp-programme > div > div:first-child > div:first-child > h2,
+  #csi-awards-exp-speakers > div > div:first-of-type > div:first-child > h2,
+  #csi-indaba-insights-v2 h2,
+  #csi-awards-exp-behind-scenes h2,
+  #csi-awards-exp-tickets > div > div:first-child > h2 {
+    font-size: clamp(30px, 8vw, 38px) !important;
+    line-height: 1.02 !important;
+  }
+}
+
+/* MOBILE PROGRAMME CAROUSEL: keep desktop as a list, but make programme rows swipeable on phones. */
+#csi-awards-exp-programme .csi-programme-v3-carousel-controls {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #csi-awards-exp-programme .csi-programme-v3-carousel-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin: 2px 0 10px;
+  }
+
+  #csi-awards-exp-programme .csi-programme-v3-carousel-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #071429;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .92);
+    color: #071429;
+    font-family: "Figtree", sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(7, 20, 41, .08);
+  }
+
+  #csi-awards-exp-programme .csi-programme-v3-carousel-btn:disabled {
+    opacity: .36;
+    cursor: default;
+    box-shadow: none;
+  }
+
+  #csi-awards-exp-programme .csi-programme-v3-list {
+    display: flex !important;
+    gap: 12px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding: 0 4px 10px !important;
+    margin: 0 -4px !important;
+  }
+
+  #csi-awards-exp-programme .csi-programme-v3-list::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  #csi-awards-exp-programme .csi-programme-v3-row {
+    flex: 0 0 min(86vw, 340px) !important;
+    min-width: min(86vw, 340px) !important;
+    min-height: 210px !important;
+    scroll-snap-align: start !important;
+    scroll-snap-stop: always !important;
+    align-content: start !important;
+    grid-template-columns: 54px minmax(0, 1fr) !important;
+    gap: 10px 12px !important;
+    padding: 15px !important;
+  }
+
+  #csi-awards-exp-programme .csi-programme-v3-thumb {
+    width: 54px !important;
+    height: 54px !important;
+  }
+
+  #csi-awards-exp-programme .csi-programme-v3-time {
+    font-size: 11px !important;
+    line-height: 1.15 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+  }
+
+  #csi-awards-exp-programme .csi-programme-v3-row h5 {
+    font-size: clamp(15px, 4.4vw, 18px) !important;
+    line-height: 1.12 !important;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+
+  #csi-awards-exp-programme .csi-programme-v3-row p {
+    display: -webkit-box;
+    font-size: 12px !important;
+    line-height: 1.42 !important;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+
+  #csi-awards-exp-programme .csi-programme-v3-pill {
+    align-self: end !important;
+    font-size: 9px !important;
+    line-height: 1.15 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  #csi-awards-exp-programme .csi-programme-v3-carousel-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  #csi-awards-exp-programme .csi-programme-v3-row {
+    flex-basis: 88vw !important;
+    min-width: 88vw !important;
+    min-height: 205px !important;
+    padding: 13px !important;
+  }
+}
+
+/* MOBILE KEYNOTE ACTIONS: two buttons on the first row, full agenda button below. */
+@media (max-width: 768px) {
+  .csi-principal-keynote-artwork .csi-keynote-spotlight-actions,
+  .csi-principal-keynote-artwork div.csi-keynote-spotlight-actions[style] {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+  }
+
+  .csi-principal-keynote-artwork .csi-keynote-spotlight-actions > a,
+  .csi-principal-keynote-artwork div.csi-keynote-spotlight-actions[style] > a {
+    box-sizing: border-box;
+    justify-content: center !important;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0;
+    padding: 11px clamp(9px, 2.6vw, 13px) !important;
+    font-size: clamp(8.5px, 2.35vw, 10.5px) !important;
+    letter-spacing: .2px !important;
+    line-height: 1.15;
+    text-align: center !important;
+    overflow-wrap: normal;
+    white-space: nowrap !important;
+    word-break: keep-all;
+  }
+
+  .csi-principal-keynote-artwork .csi-keynote-spotlight-actions > a:nth-child(1),
+  .csi-principal-keynote-artwork div.csi-keynote-spotlight-actions[style] > a:nth-child(1) {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  .csi-principal-keynote-artwork .csi-keynote-spotlight-actions > a:nth-child(2),
+  .csi-principal-keynote-artwork div.csi-keynote-spotlight-actions[style] > a:nth-child(2) {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  .csi-principal-keynote-artwork .csi-keynote-spotlight-actions > a:nth-child(3),
+  .csi-principal-keynote-artwork div.csi-keynote-spotlight-actions[style] > a:nth-child(3) {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 }
