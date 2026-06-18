@@ -48,6 +48,273 @@ const pageIds = [
 const frame = document.getElementById("clientFrame");
 let currentPage = "home";
 
+const unifiedHeaderLinks = [
+  { label: "Home", href: "index.html", key: "home" },
+  { label: "Speakers", href: "featured-speakers.html", key: "speakers" },
+  { label: "Team", href: "team.html", key: "team" },
+  { label: "Agenda", href: "full-programme.html", key: "programme" },
+  { label: "Tickets", href: "index.html#csi-awards-exp-tickets", key: "tickets" },
+  { label: "Insights", href: "insights.html", key: "insights" }
+];
+
+const brandLogo = "https://www.image2url.com/r2/default/images/1781046234023-115517cd-32e4-4b6f-becc-4dbcba0c864c.png";
+
+const unifiedHeaderCss = `
+  html {
+    scroll-padding-top: 84px;
+  }
+  .csi-unified-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.58), rgba(255,255,255,.28)),
+      rgba(255,255,255,.22);
+    border-bottom: 1px solid rgba(255,255,255,.42);
+    box-shadow: 0 16px 38px rgba(0,0,0,.10);
+    backdrop-filter: blur(24px) saturate(1.45);
+    -webkit-backdrop-filter: blur(24px) saturate(1.45);
+    font-family: "Figtree", "DM Sans", Arial, sans-serif;
+  }
+  .csi-unified-nav {
+    width: min(100%, 1440px);
+    min-height: 76px;
+    margin: 0 auto;
+    padding: 12px clamp(18px, 3vw, 44px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .csi-unified-brand {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+  }
+  .csi-unified-brand img {
+    display: block;
+    width: 112px;
+    height: auto;
+  }
+  .csi-unified-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(14px, 2vw, 30px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .csi-unified-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: #111;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .csi-unified-links a[aria-current="page"] {
+    color: #526600;
+  }
+  .csi-unified-menu {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(17,17,17,.16);
+    border-radius: 0;
+    background: rgba(255,255,255,.46);
+    color: #111;
+    backdrop-filter: blur(18px) saturate(1.35);
+    -webkit-backdrop-filter: blur(18px) saturate(1.35);
+    align-items: center;
+    justify-content: center;
+    font: inherit;
+    font-weight: 900;
+    cursor: pointer;
+  }
+  .csi-unified-main-offset {
+    padding-top: 0;
+  }
+  @media (max-width: 820px) {
+    html {
+      scroll-padding-top: 76px;
+    }
+    .csi-unified-nav {
+      min-height: 68px;
+      padding: 10px 18px;
+    }
+    .csi-unified-brand img {
+      width: 96px;
+    }
+    .csi-unified-menu {
+      display: inline-flex;
+    }
+    .csi-unified-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      display: none;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 10px 18px 18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.68), rgba(255,255,255,.36)),
+        rgba(255,255,255,.28);
+      border-bottom: 1px solid rgba(255,255,255,.42);
+      box-shadow: 0 18px 28px rgba(0,0,0,.10);
+      backdrop-filter: blur(24px) saturate(1.45);
+      -webkit-backdrop-filter: blur(24px) saturate(1.45);
+    }
+    .csi-unified-header.is-open .csi-unified-links {
+      display: flex;
+    }
+    .csi-unified-links a {
+      width: 100%;
+      justify-content: flex-start;
+      min-height: 48px;
+    }
+    .csi-unified-main-offset {
+      padding-top: 0;
+    }
+  }
+`;
+
+const unifiedFooterCss = `
+  .csi-unified-footer {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    overflow: hidden;
+    background: #071429;
+    color: #fff;
+    font-family: "Figtree", "DM Sans", Arial, sans-serif;
+  }
+  .csi-unified-footer::before {
+    content: "INDABA";
+    position: absolute;
+    left: 50%;
+    bottom: -50px;
+    transform: translateX(-50%);
+    font-size: clamp(100px, 18vw, 280px);
+    font-weight: 900;
+    line-height: .8;
+    letter-spacing: 0;
+    color: rgba(143,184,232,.08);
+    pointer-events: none;
+  }
+  .csi-unified-footer-inner {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 1440px);
+    margin: 0 auto;
+    padding: clamp(56px, 8vw, 88px) clamp(18px, 3vw, 44px) 30px;
+  }
+  .csi-unified-footer-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 1.5fr) minmax(140px, .8fr) minmax(150px, .8fr) minmax(220px, 1fr);
+    gap: clamp(28px, 5vw, 64px);
+    align-items: start;
+    margin-bottom: clamp(44px, 6vw, 76px);
+  }
+  .csi-unified-footer-brand {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 26px;
+  }
+  .csi-unified-footer-brand img {
+    display: block;
+    width: clamp(126px, 12vw, 188px);
+    height: auto;
+  }
+  .csi-unified-footer p {
+    margin: 0;
+    color: rgba(255,255,255,.66);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  .csi-unified-footer h2,
+  .csi-unified-footer h3 {
+    margin: 0 0 22px;
+    color: #8fb8e8;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .22em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+  .csi-unified-footer ul {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .csi-unified-footer li,
+  .csi-unified-footer a {
+    color: rgba(255,255,255,.74);
+    font-size: 15px;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+  .csi-unified-footer a:hover {
+    color: #fff;
+  }
+  .csi-unified-footer-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 999px;
+    background: #8fb8e8;
+    color: #111 !important;
+    font-weight: 900;
+  }
+  .csi-unified-footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,.12);
+    padding-top: 24px;
+  }
+  .csi-unified-footer-bottom p,
+  .csi-unified-footer-bottom a {
+    color: rgba(255,255,255,.42);
+    font-size: 13px;
+  }
+  .csi-unified-footer-bottom-links {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 900px) {
+    .csi-unified-footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 620px) {
+    .csi-unified-footer-grid {
+      grid-template-columns: 1fr;
+    }
+    .csi-unified-footer-bottom {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+`;
+
 const hrefMap = new Map([
   ["featured-speakers.html", "speakers"],
   ["../featured-speakers.html", "speakers"],
@@ -154,6 +421,139 @@ function scrollFrameToHash(hash) {
   }, 120);
 }
 
+function getUnifiedHeaderKey(page) {
+  if (page === "team") return "team";
+  if (page === "programme" || page.startsWith("session-")) return "programme";
+  if (page === "speakers" || page.startsWith("profile")) return "speakers";
+  if (page === "insights" || page.startsWith("article-")) return "insights";
+  return "home";
+}
+
+function installUnifiedHeader() {
+  try {
+    const doc = frame.contentDocument || frame.contentWindow.document;
+
+    if (!doc || !doc.body) return;
+
+    doc.querySelectorAll(
+      "header:not(#csiUnifiedHeader), header.header, header.csi-clean-nav, header.csi-site-header, header.primary-nav, header.nav, header.site-header"
+    ).forEach(header => header.remove());
+    doc.querySelectorAll("#mobileOverlay, #mobileDrawer").forEach(drawer => drawer.remove());
+
+    if (!doc.getElementById("csi-unified-header-style")) {
+      const style = doc.createElement("style");
+      style.id = "csi-unified-header-style";
+      style.textContent = unifiedHeaderCss;
+      doc.head.appendChild(style);
+    }
+
+    const activeKey = getUnifiedHeaderKey(currentPage);
+    const links = unifiedHeaderLinks.map(link => {
+      const current = link.key === activeKey ? ' aria-current="page"' : "";
+      return `<li><a href="${link.href}"${current}>${link.label}</a></li>`;
+    }).join("");
+
+    const existingHeader = doc.getElementById("csiUnifiedHeader");
+    if (existingHeader) existingHeader.remove();
+
+    const header = doc.createElement("header");
+    header.id = "csiUnifiedHeader";
+    header.className = "csi-unified-header";
+    header.innerHTML = `
+      <nav class="csi-unified-nav" aria-label="Primary navigation">
+        <a class="csi-unified-brand" href="index.html" aria-label="CSI Indaba home">
+          <img src="${brandLogo}" alt="CSI Indaba">
+        </a>
+        <button class="csi-unified-menu" type="button" aria-expanded="false" aria-label="Toggle navigation">Menu</button>
+        <ul class="csi-unified-links">${links}</ul>
+      </nav>
+    `;
+
+    doc.body.insertBefore(header, doc.body.firstChild);
+    doc.body.classList.add("csi-unified-main-offset");
+
+    const toggle = header.querySelector(".csi-unified-menu");
+    toggle.addEventListener("click", () => {
+      const isOpen = header.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+  } catch (error) {
+    // The iframe document can briefly be unavailable during srcdoc swaps.
+  }
+}
+
+function installUnifiedFooter() {
+  try {
+    const doc = frame.contentDocument || frame.contentWindow.document;
+
+    if (!doc || !doc.body) return;
+
+    doc.querySelectorAll("footer:not(#csiUnifiedFooter)").forEach(footer => footer.remove());
+
+    if (!doc.getElementById("csi-unified-footer-style")) {
+      const style = doc.createElement("style");
+      style.id = "csi-unified-footer-style";
+      style.textContent = unifiedFooterCss;
+      doc.head.appendChild(style);
+    }
+
+    const existingFooter = doc.getElementById("csiUnifiedFooter");
+    if (existingFooter) existingFooter.remove();
+
+    const footer = doc.createElement("footer");
+    footer.id = "csiUnifiedFooter";
+    footer.className = "csi-unified-footer";
+    footer.innerHTML = `
+      <div class="csi-unified-footer-inner">
+        <div class="csi-unified-footer-grid">
+          <section aria-labelledby="csiFooterAbout">
+            <a class="csi-unified-footer-brand" href="index.html" aria-label="CSI Indaba home">
+              <img src="${brandLogo}" alt="CSI Indaba">
+            </a>
+            <h2 id="csiFooterAbout">CSI Indaba 2026</h2>
+            <p>South Africa's biggest CSI classroom: a three-day gathering for corporate social investment leaders, changemakers, policymakers and community builders.</p>
+          </section>
+          <section aria-labelledby="csiFooterExplore">
+            <h3 id="csiFooterExplore">Explore</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="featured-speakers.html">Speakers</a></li>
+              <li><a href="team.html">Team</a></li>
+              <li><a href="insights.html">Insights</a></li>
+            </ul>
+          </section>
+          <section aria-labelledby="csiFooterEvent">
+            <h3 id="csiFooterEvent">Event</h3>
+            <ul>
+              <li>14 - 16 July 2026</li>
+              <li>Johannesburg, South Africa</li>
+              <li><a href="full-programme.html">Full Programme</a></li>
+              <li><a href="index.html#csi-awards-exp-tickets">Tickets</a></li>
+            </ul>
+          </section>
+          <section id="csi-indaba-contact" aria-labelledby="csiFooterConnect">
+            <h3 id="csiFooterConnect">Connect</h3>
+            <p>For delegate access, speaker updates and delegate participation, use the registration route on this site.</p>
+            <a class="csi-unified-footer-cta" href="https://form.jotform.com/252986272146566" target="_blank" rel="noopener">Register Now -></a>
+          </section>
+        </div>
+        <div class="csi-unified-footer-bottom">
+          <p>&copy; 2026 CSI Indaba. All rights reserved.</p>
+          <div class="csi-unified-footer-bottom-links">
+            <a href="index.html">Home</a>
+            <a href="featured-speakers.html">Speakers</a>
+            <a href="full-programme.html">Programme</a>
+          </div>
+        </div>
+      </div>
+    `;
+
+    doc.body.appendChild(footer);
+  } catch (error) {
+    // The iframe document can briefly be unavailable during srcdoc swaps.
+  }
+}
+
 function setShellHash(page, hash) {
   const baseUrl = location.pathname + location.search;
 
@@ -204,6 +604,8 @@ function bindFrameNavigation() {
 
       if (!doc || doc.__csiShellNavBound) return;
 
+      installUnifiedHeader();
+      installUnifiedFooter();
       doc.__csiShellNavBound = true;
       doc.addEventListener("click", event => {
         const link = event.target.closest && event.target.closest("a[href]");
@@ -235,6 +637,8 @@ function bindFrameNavigation() {
 }
 
 frame.addEventListener("load", () => {
+  installUnifiedHeader();
+  installUnifiedFooter();
   bindFrameNavigation();
 
   if (currentPage !== "home") return;

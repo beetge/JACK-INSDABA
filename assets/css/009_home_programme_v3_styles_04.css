@@ -1148,3 +1148,194 @@ summary:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
+
+/* MOBILE SPEAKER GRID: keep the inline speaker grids at three columns and make card text fit. */
+@media (max-width: 820px) {
+  #csi-awards-exp-speakers .speakers-grid,
+  #csi-awards-exp-speakers div.speakers-grid[style*="grid-template-columns"],
+  #csi-awards-exp-speakers div[style*="grid-template-columns:repeat(4"],
+  #page-csi-awards-speakers div[style*="grid-template-columns:repeat(4"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: clamp(8px, 2.4vw, 14px) !important;
+    align-items: start;
+  }
+
+  #csi-awards-exp-speakers .csi-speaker-preview-card,
+  #page-csi-awards-speakers .csi-speaker-preview-card {
+    align-self: start;
+    height: auto !important;
+    min-height: 0 !important;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 6px;
+  }
+
+  #csi-awards-exp-speakers .csi-speaker-preview-media,
+  #page-csi-awards-speakers .csi-speaker-preview-media {
+    aspect-ratio: 1 / 1.12;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+
+  #csi-awards-exp-speakers .csi-speaker-fallback,
+  #page-csi-awards-speakers .csi-speaker-fallback {
+    font-size: clamp(20px, 7vw, 34px) !important;
+  }
+
+  #csi-awards-exp-speakers .csi-speaker-quote-overlay,
+  #page-csi-awards-speakers .csi-speaker-quote-overlay {
+    display: none;
+  }
+
+  #csi-awards-exp-speakers .csi-speaker-preview-body,
+  #page-csi-awards-speakers .csi-speaker-preview-body {
+    display: block !important;
+    flex: 0 0 auto !important;
+    min-width: 0;
+    padding: clamp(8px, 2.2vw, 12px) !important;
+  }
+
+  #csi-awards-exp-speakers .csi-speaker-preview-role,
+  #page-csi-awards-speakers .csi-speaker-preview-role {
+    margin-bottom: 5px !important;
+    font-size: clamp(8px, 2.25vw, 10px) !important;
+    line-height: 1.25 !important;
+    letter-spacing: .06em !important;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  #csi-awards-exp-speakers .csi-speaker-preview-body h3,
+  #page-csi-awards-speakers .csi-speaker-preview-body h3 {
+    margin-bottom: 6px !important;
+    font-size: clamp(12px, 3.25vw, 16px) !important;
+    line-height: 1.08 !important;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    hyphens: auto;
+  }
+
+  #csi-awards-exp-speakers .csi-speaker-preview-bio,
+  #page-csi-awards-speakers .csi-speaker-preview-bio {
+    display: -webkit-box;
+    margin-bottom: 8px !important;
+    font-size: clamp(9px, 2.35vw, 11px) !important;
+    line-height: 1.35 !important;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  #csi-awards-exp-speakers .csi-speaker-profile-link,
+  #page-csi-awards-speakers .csi-speaker-profile-link {
+    display: flex !important;
+    width: 100%;
+    min-height: 32px;
+    margin-top: 8px !important;
+    padding: 7px 8px !important;
+    font-size: clamp(9px, 2.35vw, 11px) !important;
+    line-height: 1.1 !important;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 380px) {
+  #csi-awards-exp-speakers .speakers-grid,
+  #csi-awards-exp-speakers div.speakers-grid[style*="grid-template-columns"],
+  #csi-awards-exp-speakers div[style*="grid-template-columns:repeat(4"],
+  #page-csi-awards-speakers div[style*="grid-template-columns:repeat(4"] {
+    gap: 7px !important;
+  }
+
+  #csi-awards-exp-speakers .csi-speaker-preview-body,
+  #page-csi-awards-speakers .csi-speaker-preview-body {
+    padding: 7px !important;
+  }
+}
+
+/* MOBILE INSIGHTS GRID: mirror the speaker cards so article tiles stay compact in three columns. */
+@media (max-width: 820px) {
+  #csi-indaba-insights-v2 .insights-grid,
+  #csi-indaba-insights-v2 #executive-articles-grid-v2,
+  #csi-indaba-insights-v2 div.insights-grid[style*="grid-template-columns"],
+  #csi-indaba-insights-v2 div[style*="grid-template-columns:repeat(3"] {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: clamp(8px, 2.4vw, 14px) !important;
+    align-items: start !important;
+  }
+
+  #csi-indaba-insights-v2 .podcast-card-v3 {
+    align-self: start;
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  #csi-indaba-insights-v2 .podcast-card-v3 .thumb-wrap {
+    aspect-ratio: 1 / 1.05;
+    height: auto !important;
+    min-height: 0 !important;
+    margin-bottom: 8px !important;
+    border-radius: 8px !important;
+  }
+
+  #csi-indaba-insights-v2 .podcast-card-v3 .type-tag {
+    left: 7px !important;
+    right: auto !important;
+    bottom: 7px !important;
+    max-width: calc(100% - 14px) !important;
+    padding: 4px 6px !important;
+    border-radius: 6px !important;
+    font-size: clamp(7px, 1.9vw, 9px) !important;
+    line-height: 1.15 !important;
+    letter-spacing: .06em !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+  }
+
+  #csi-indaba-insights-v2 .podcast-card-v3 h4 {
+    margin-bottom: 6px !important;
+    font-size: clamp(12px, 3.25vw, 16px) !important;
+    line-height: 1.08 !important;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    hyphens: auto;
+  }
+
+  #csi-indaba-insights-v2 .podcast-card-v3 p {
+    display: -webkit-box;
+    margin-bottom: 8px !important;
+    font-size: clamp(9px, 2.35vw, 11px) !important;
+    line-height: 1.35 !important;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  #csi-indaba-insights-v2 .podcast-card-v3 .animated-line-link,
+  #csi-indaba-insights-v2 .podcast-card-v3 .date-tag {
+    display: block !important;
+    font-size: clamp(9px, 2.35vw, 11px) !important;
+    line-height: 1.15 !important;
+    overflow-wrap: anywhere;
+  }
+
+  #csi-indaba-insights-v2 .podcast-card-v3 .date-tag {
+    margin-top: 6px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  #csi-indaba-insights-v2 .insights-grid,
+  #csi-indaba-insights-v2 #executive-articles-grid-v2,
+  #csi-indaba-insights-v2 div.insights-grid[style*="grid-template-columns"],
+  #csi-indaba-insights-v2 div[style*="grid-template-columns:repeat(3"] {
+    gap: 7px !important;
+  }
+}
